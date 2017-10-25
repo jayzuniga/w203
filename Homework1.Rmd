@@ -1,0 +1,100 @@
+---
+title: "Homework Exercise 1"
+author: "W203 Instructional Team"
+date: ""
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+W203 Statistics for Data Science
+========================================================
+Unit 1 Homework
+========================================================
+
+
+Load the dataset found in the file, cars.csv.
+
+Load dataset into a data frame Cars.
+```{r load}
+setwd("/Users/jayz/Downloads/homework1")
+Cars <- read.table("cars.csv", sep=",", header=TRUE)
+```
+
+
+1. What are the variables in the file?
+
+Variables in file are: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb
+```{r}
+ names(Cars)
+```
+
+
+2. Find the mean, median, minimum, maximum, 1st quartile and 3rd quartile for the mpg variable.
+
+Mean is        : 19.492
+Median is      : 18.7
+Minimum is     : 10.4
+Maximum is     : 33.9
+1st Quantile is: 15.2
+3rd Quantile is: 21.5
+```{r}
+ mean(Cars$mpg)
+ median(Cars$mpg)
+ min(Cars$mpg)
+ max(Cars$mpg)
+ quantile(Cars$mpg, probs=c(.25, .75))
+```
+
+
+3. Create a histogram of the mpg variable. 
+
+```{r}
+ hist(Cars$mpg, main="Car mpg histogram", xlab="mpg")
+```
+
+
+4. What is the standard deviation of mpg variable?
+
+Standard deviation is: 6.047446
+
+```{r}
+ sd(Cars$mpg)
+```
+
+
+5. What is the variance of mpg variable?
+
+Variance is: 36.5716 
+
+```{r}
+ var(Cars$mpg)
+```
+
+6. What is the relationship of the standard deviation to the variance? Why does the standard deviation and variance of the mpg variable differ? 
+
+Standard deviation is the square root of the variance, which explains their difference.
+```{r}
+ sd(Cars$mpg)
+ var(Cars$mpg)
+ sqrt(var(Cars$mpg))
+```
+
+
+7. How many data points are there for the cyl variable? 
+
+There are 25 data points in Cars$cyl, 2 of which have missing values.
+```{r}
+ str(Cars$cyl)
+ summary(Cars$cyl)
+```
+
+8. What is the mean of the cyl variable?
+
+Mean of cyl is 6.26087
+```{r}
+ mean(Cars$cyl, na.rm=TRUE)
+```
